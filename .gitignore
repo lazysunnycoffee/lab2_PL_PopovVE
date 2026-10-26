@@ -55,7 +55,7 @@ dkms.conf
 *.dwo
 
 # CMake build directories and artifacts
-/build/
+/build*/
 /CMakeSettings.json
 /CMakeUserPresets.json
 CMakeFiles/
@@ -69,3 +69,8 @@ Makefile
 *.workspace
 *.suo
 *.user
+
+# profiling artifacts
+perf.data*
+callgrind.out.*
+gmon.out
