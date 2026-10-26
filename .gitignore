@@ -53,3 +53,19 @@ dkms.conf
 
 # debug information files
 *.dwo
+
+# CMake build directories and artifacts
+/build/
+/CMakeSettings.json
+/CMakeUserPresets.json
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# IDE settings (VS Code, CLion, Visual Studio)
+.vscode/
+.idea/
+*.workspace
+*.suo
+*.user
