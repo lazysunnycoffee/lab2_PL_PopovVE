@@ -4,13 +4,13 @@
 
 int solve_and_print(const char *line){
     char out[256];
-    int solve = solve_puzzle(line, out, sizeof(line))
+    int solve = solve_puzzle(line, out, sizeof(out));
     if (solve == 1){
         printf("%s\n", out);
         return 0;
     }
-    if (solve == 0) fprinf(stderr, "Решение не найдено: %s\n", line);
-    else fprinf(stderr, "Прочие ошибки: %s\n", line);
+    if (solve == 0) fprintf(stderr, "Решение не найдено: %s\n", line);
+    else fprintf(stderr, "Прочие ошибки: %s\n", line);
     return 1;
 }
 

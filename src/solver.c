@@ -57,7 +57,7 @@ static int parse_puzzle(const char *input, Puzzle *p){
 
 static long long word_value(const char *w, const int digit_of[26]){
     long long value = 0;
-    for (char *c = w; *c; c++){
+    for (const char *c = w; *c; c++){
         value = value * 10 + digit_of[*c - 'A'];
     }
     return value;
@@ -69,7 +69,7 @@ static int check(const Puzzle *p){
             return 0;
     }
     long long sum = 0;
-    for (int i = 0; i < p->word_count - 1; p++){
+    for (int i = 0; i < p->word_count - 1; i++){
         sum += word_value(p->words[i], p->digit_of);
     }
     return sum == word_value(p->words[p->word_count - 1], p->digit_of);
@@ -77,7 +77,7 @@ static int check(const Puzzle *p){
 
 static int search(Puzzle *p, int idx, int used[10]){
     if (idx == p->letter_count)
-        return check(*p);
+        return check(p);
 
     int li = p->letters[idx] - 'A';
     for (int d = 0; d < 10; d++) {
@@ -107,7 +107,7 @@ static int build_output(const char *input, const Puzzle *p, char *out, size_t ou
 
 int solve_puzzle(const char *input, char *out, size_t out_size){
     Puzzle p;
-    int used[10] = {};
+    int used[10] = {0};
 
     for (int i = 0; i < LET_IN_ALF; i++) p.digit_of[i] = -1;
     if (parse_puzzle(input, &p) != 0) return -1;
